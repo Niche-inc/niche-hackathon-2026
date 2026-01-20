@@ -8,8 +8,8 @@ import {
 
 // Configuration - replace with your actual values
 const NICHE_API_BASE_URL = "https://app.nicheandleads.com";
-const OAUTH_TOKEN = process.env.NICHE_OAUTH_TOKEN || "your-oauth-token";
-const BUSINESS_ID = process.env.NICHE_BUSINESS_ID || "your-business-id";
+const OAUTH_TOKEN = process.env.NICHE_OAUTH_TOKEN || "2691a9bf7f5307b52197ad92aa39a4d30f6cf20b3eaebf34dded731bb63fcb3b";
+const BUSINESS_ID = process.env.NICHE_BUSINESS_ID || "a7a10b58-baff-4762-935c-fe95a7aeb9d4";
 
 // Configure the API client
 client.setConfig({
@@ -30,8 +30,12 @@ async function createPhoneAgent() {
     body: {
       name: "Customer Support Agent",
       type: "INBOUND", // INBOUND for receiving calls, OUTBOUND for making calls
-      customInstructions: `You are a helpful customer support agent. 
-        Be friendly and professional. 
+      conversationFlow: `Greet the caller warmly. Ask how you can help them today. 
+        Listen to their question or concern. Provide helpful information or assistance.
+        If needed, collect their name and contact information for follow-up.
+        Thank them for calling and offer any additional help before ending the call.`,
+      customInstructions: `You are a helpful customer support agent.
+        Be friendly and professional.
         Help callers with their questions and collect their contact information if needed.`,
       firstMessage:
         "Hi there! Thanks for calling. How can I help you today?",
